@@ -8,12 +8,10 @@ import { Container } from 'App.styled'
 import { addContact, deleteContact, setFilter } from "./Redux/contactsSlice";
 
 export const App = () => {
-  const contacts = useSelector(state => state.contacts.data);
+  const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
 
-  console.log(contacts.data);
-  console.log(filter);
 
   useEffect(() => {
     const savedContacts = localStorage.getItem('contacts-list');
@@ -53,21 +51,13 @@ export const App = () => {
     dispatch(setFilter(newFilter));
   }
 
-  const getVisibleContacts = () => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-
-  const visibleContacts = getVisibleContacts();
-
   return (
     <Container>
       <h1>Phonebook</h1>
       <ContactForm toAdd={handleAddContact} />
       <h2>Contacts</h2>
       <Filter filterName={filter} toSearch={handleFilterChange} />
-      <ContactList persons={visibleContacts} toDelete={deleteContactElement} />
+      <ContactList toDelete={deleteContactElement} />
     </Container>
   )
 }
