@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/goit-react-hw-06-phonealter/static/css/main.7cda0caf.css",
-    "main.js": "/goit-react-hw-06-phonealter/static/js/main.cb7648c3.js",
+    "main.js": "/goit-react-hw-06-phonealter/static/js/main.f4e006f9.js",
     "index.html": "/goit-react-hw-06-phonealter/index.html",
     "main.7cda0caf.css.map": "/goit-react-hw-06-phonealter/static/css/main.7cda0caf.css.map",
-    "main.cb7648c3.js.map": "/goit-react-hw-06-phonealter/static/js/main.cb7648c3.js.map"
+    "main.f4e006f9.js.map": "/goit-react-hw-06-phonealter/static/js/main.f4e006f9.js.map"
   },
   "entrypoints": [
     "static/css/main.7cda0caf.css",
-    "static/js/main.cb7648c3.js"
+    "static/js/main.f4e006f9.js"
   ]
 }
