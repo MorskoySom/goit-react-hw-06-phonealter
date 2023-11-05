@@ -1,12 +1,14 @@
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Contact } from "../Element/Element";
 
 export const ContactList = () => {
     const persons = useSelector(state => state.contacts.data);
+    const filter = useSelector(state => state.contacts.filter);
+    console.log(filter);
 
-    console.log(persons)
+
     return (
         <ul>
             {persons.map(person => (

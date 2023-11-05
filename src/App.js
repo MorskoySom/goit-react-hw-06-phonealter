@@ -8,21 +8,21 @@ import { Container } from 'App.styled'
 import { addContact, deleteContact, setFilter } from "./Redux/contactsSlice";
 
 export const App = () => {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.data);
   const filter = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
 
 
-  useEffect(() => {
-    const savedContacts = localStorage.getItem('contacts-list');
-    if (savedContacts !== null) {
-      dispatch(addContact(JSON.parse(savedContacts)));
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const savedContacts = localStorage.getItem('contacts-list');
+  //   if (savedContacts !== null) {
+  //     dispatch(addContact(JSON.parse(savedContacts)));
+  //   }
+  // }, [dispatch]);
 
-  useEffect(() => {
-    localStorage.setItem(`contacts-list`, JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem(`contacts-list`, JSON.stringify(contacts));
+  // }, [contacts]);
 
   const checkIfContactExists = (name, number) => {
     const existingContact = contacts.find(
