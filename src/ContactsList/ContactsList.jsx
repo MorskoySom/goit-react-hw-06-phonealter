@@ -8,10 +8,17 @@ export const ContactList = () => {
     const filter = useSelector(state => state.contacts.filter);
     console.log(filter);
 
+    const getVisibleContacts = () => {
+        return persons.filter(person =>
+            person.name.toLowerCase().includes(filter.toLowerCase())
+        );
+    }
+
+    const visibleContacts = getVisibleContacts();
 
     return (
         <ul>
-            {persons.map(person => (
+            {visibleContacts.map(person => (
                 <li key={person.id}>
                     <Contact info={person} />
                 </li>

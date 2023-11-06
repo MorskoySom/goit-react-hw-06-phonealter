@@ -7,15 +7,6 @@ const handleInputChange = (evt, toSearch) => {
     toSearch(evt.target.value);
 }
 
-// const getVisibleContacts = () => {
-//     return contacts.filter(contact =>
-//         contact.name.toLowerCase().includes(filter.toLowerCase())
-//     );
-// }
-
-// const visibleContacts = getVisibleContacts();
-
-
 export const Filter = ({ filterName, toSearch }) => {
     const dispatch = useDispatch();
     const handleFilterChange = (newFilter) => {
