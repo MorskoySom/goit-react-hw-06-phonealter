@@ -2,8 +2,9 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Forma, Pole } from "./ContactForm.styled";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { addContact } from '../Redux/contactsSlice';
+import { nanoid } from "nanoid";
 
 const FormSchema = Yup.object().shape({
     name: Yup.string()
@@ -22,9 +23,25 @@ const FormSchema = Yup.object().shape({
 
 export const ContactForm = () => {
     const dispatch = useDispatch();
+    const contacts = useSelector(state => state.contacts.data);
 
-    const handleAddContact = (values) => {
-        dispatch(addContact(values));
+    const checkIfContactExists = (name, number) => {
+        const existingContact = contacts.find(
+            contact => contact.name.toLowerCase() === name.toLowerCase() ||
+                contact.number === number
+        );
+        return existingContact;
+    }
+
+    const handleAddContact = (newContact) => {
+        const { name, number } = newContact;
+
+        if (checkIfContactExists(name, number)) {
+            alert(`Contact with name ${name} or number ${number} already exists!`);
+            return;
+        }
+
+        dispatch(addContact({ ...newContact, id: nanoid() }));
     }
 
     return (
